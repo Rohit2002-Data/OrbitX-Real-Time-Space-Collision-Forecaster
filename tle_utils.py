@@ -20,22 +20,31 @@ def compute_positions(tle_lines, max_sats=20):
     now = datetime.utcnow()
 
     for i in range(0, min(len(tle_lines), max_sats * 3), 3):
-        name = tle_lines[i].strip()
-        s = Satrec.twoline2rv(tle_lines[i+1], tle_lines[i+2])
-        error_code, pos, vel = s.sgp4(
-            now.year,
-            now.timetuple().tm_yday + now.hour / 24 + now.minute / (24 * 60)
-        )
+        # Ensure we have a complete TLE group
+        if i + 2 >= len(tle_lines):
+            break
 
-        if error_code == 0:
-            sats.append({
-                'name': name,
-                'x': pos[0],
-                'y': pos[1],
-                'z': pos[2],
-                'vx': vel[0],
-                'vy': vel[1],
-                'vz': vel[2]
-            })
+        name = tle_lines[i].strip()
+        try:
+            s = Satrec.twoline2rv(tle_lines[i+1], tle_lines[i+2])
+
+            error_code, pos, vel = s.sgp4(
+                now.year,
+                now.timetuple().tm_yday + now.hour / 24 + now.minute / (24 * 60)
+            )
+
+            if error_code == 0:
+                sats.append({
+                    'name': name,
+                    'x': pos[0],
+                    'y': pos[1],
+                    'z': pos[2],
+                    'vx': vel[0],
+                    'vy': vel[1],
+                    'vz': vel[2]
+                })
+        except Exception as e:
+            # Skip malformed TLEs or sgp4 failures
+            continue
 
     return pd.DataFrame(sats)
