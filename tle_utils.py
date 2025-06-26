@@ -4,10 +4,7 @@ from datetime import datetime
 import pandas as pd
 
 TLE_SOURCES = {
-    "All Active Satellites": "https://celestrak.com/NORAD/elements/active.txt",
-    "Starlink": "https://celestrak.com/NORAD/elements/starlink.txt",
-    "GPS": "https://celestrak.com/NORAD/elements/gps-ops.txt",
-    "Iridium": "https://celestrak.com/NORAD/elements/iridium.txt"
+    "All Active Satellites": "https://celestrak.com/NORAD/elements/active.txt"
 }
 
 def fetch_tle(source_url):
