@@ -6,7 +6,6 @@ import pandas as pd
 TLE_SOURCES = {
     "All Active Satellites": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle",
     "Starlink":           "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=tle",
-    "GPS-OPS": "https://celestrak.org/NORAD/elements/gp.php?GROUP=gps-ops&FORMAT=tle",
     "Iridium":            "https://celestrak.org/NORAD/elements/gp.php?GROUP=iridium&FORMAT=tle"
 }
 
