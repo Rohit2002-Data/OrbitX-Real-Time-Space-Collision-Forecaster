@@ -56,13 +56,6 @@ for feat, imp in metrics['feature_importances'].items():
     st.sidebar.write(f"- {feat}: {imp:.3f}")
 
 # ----------------------------------
-# Pillow image
-# ----------------------------------
-st.subheader("🛰 Satellite Positions (x-y Projection Image)")
-img = create_satellite_position_image(df)
-st.image(img, caption="Satellite positions (x-y view, Pillow)", use_container_width=True)
-
-# ----------------------------------
 # 3D plot
 # ----------------------------------
 fig = go.Figure(go.Scatter3d(
