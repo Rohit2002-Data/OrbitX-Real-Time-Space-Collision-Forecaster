@@ -4,8 +4,12 @@ from datetime import datetime
 import pandas as pd
 
 TLE_SOURCES = {
-    "All Active Satellites": "https://celestrak.com/NORAD/elements/active.txt"
+    "All Active Satellites": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle",
+    "Starlink":           "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=tle",
+    "GPS":                "https://celestrak.org/NORAD/elements/gp.php?GROUP=gps-ops&FORMAT=tle",
+    "Iridium":            "https://celestrak.org/NORAD/elements/gp.php?GROUP=iridium&FORMAT=tle"
 }
+
 
 def fetch_tle(source_url):
     response = requests.get(source_url)
