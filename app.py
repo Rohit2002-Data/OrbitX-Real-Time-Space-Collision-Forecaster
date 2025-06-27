@@ -5,7 +5,6 @@ import plotly.graph_objects as go
 from tle_utils import fetch_tle, compute_positions, TLE_SOURCES
 from features import compute_features, compute_pairwise_features
 from model import generate_synthetic_conjunction_data, train_model, predict_risk
-from image_utils import create_satellite_position_image
 
 # ----------------------------------
 # Streamlit setup
